@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Profit Leakage Engine | Retraining Console</title>
+
+    <link rel="stylesheet" href="/frontend/style.css">
+</head>
+
+<body>
+
+<div class="app-shell">
+
+    <!-- ================= HEADER ================= -->
+    <header class="topbar">
+
+        <div class="brand">
+            <div class="brand-mark">PL</div>
+
+            <div>
+                <h1>Profit Leakage Engine</h1>
+                <p>Model Retraining Console</p>
+            </div>
+        </div>
+
+        <div class="model-status">
+            <span class="status-dot"></span>
+            <span>READY</span>
+        </div>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+    <main class="dashboard">
+
+        <!-- ================= DATASET CARD ================= -->
+        <section class="card dataset-card">
+
+            <div class="section-heading">
+                <div>
+                    <span class="eyebrow">DATASET</span>
+                    <h2>Training Data</h2>
+                </div>
+
+                <span class="badge neutral">XLSX / CSV</span>
+            </div>
+
+
+            <div class="upload-area" id="uploadArea">
+
+                <div class="upload-icon">↥</div>
+
+                <div class="upload-content">
+                    <h3>Select training dataset</h3>
+
+                    <p>
+                        Upload the dataset used to retrain the
+                        profit leakage detection model.
+                    </p>
+
+                    <label class="upload-button">
+                        Choose File
+                        <input
+                            type="file"
+                            id="datasetInput"
+                            accept=".xlsx,.xls,.csv"
+                            hidden
+                        >
+                    </label>
+
+                    <div class="file-name" id="fileName">
+                        No file selected
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="dataset-info">
+
+                <div class="info-item">
+                    <span>Format</span>
+                    <strong id="fileFormat">—</strong>
+                </div>
+
+                <div class="info-item">
+                    <span>Status</span>
+                    <strong id="fileStatus">Waiting</strong>
+                </div>
+
+                <div class="info-item">
+                    <span>Dataset</span>
+                    <strong id="datasetStatus">Not loaded</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= CONTROL CARD ================= -->
+        <section class="card control-card">
+
+            <div>
+                <span class="eyebrow">MODEL CONTROL</span>
+
+                <h2>Start Retraining</h2>
+
+                <p>
+                    Run the complete machine-learning pipeline
+                    and monitor training in real time.
+                </p>
+            </div>
+
+            <button
+                id="startTrainingBtn"
+                class="primary-button"
+            >
+                <span class="button-icon">▶</span>
+                Start Retraining
+            </button>
+
+        </section>
+
+
+        <!-- ================= PIPELINE ================= -->
+        <section class="card pipeline-card">
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="eyebrow">PIPELINE</span>
+                    <h2>Training Process</h2>
+                </div>
+
+                <div class="pipeline-state" id="pipelineState">
+                    Waiting to start
+                </div>
+
+            </div>
+
+
+            <div class="pipeline">
+
+                <div class="pipeline-step pending" data-step="data">
+                    <div class="step-number">01</div>
+
+                    <div class="step-content">
+                        <h3>Data Loading</h3>
+                        <p>Read and validate training dataset</p>
+                    </div>
+
+                    <div class="step-status">WAITING</div>
+                </div>
+
+
+                <div class="pipeline-line"></div>
+
+
+                <div class="pipeline-step pending" data-step="features">
+                    <div class="step-number">02</div>
+
+                    <div class="step-content">
+                        <h3>Feature Engineering</h3>
+                        <p>Create profitability and operational features</p>
+                    </div>
+
+                    <div class="step-status">WAITING</div>
+                </div>
+
+
+                <div class="pipeline-line"></div>
+
+
+                <div class="pipeline-step pending" data-step="preparation">
+                    <div class="step-number">03</div>
+
+                    <div class="step-content">
+                        <h3>Data Preparation</h3>
+                        <p>Encoding, splitting and feature scaling</p>
+                    </div>
+
+                    <div class="step-status">WAITING</div>
+                </div>
+
+
+                <div class="pipeline-line"></div>
+
+
+                <div class="pipeline-step pending" data-step="training">
+                    <div class="step-number">04</div>
+
+                    <div class="step-content">
+                        <h3>Autoencoder Training</h3>
+                        <p>Train neural network using reconstruction loss</p>
+                    </div>
+
+                    <div class="step-status">WAITING</div>
+                </div>
+
+
+                <div class="pipeline-line"></div>
+
+
+                <div class="pipeline-step pending" data-step="anomaly">
+                    <div class="step-number">05</div>
+
+                    <div class="step-content">
+                        <h3>Anomaly Detection</h3>
+                        <p>Calculate reconstruction error and threshold</p>
+                    </div>
+
+                    <div class="step-status">WAITING</div>
+                </div>
+
+
+                <div class="pipeline-line"></div>
+
+
+                <div class="pipeline-step pending" data-step="risk">
+                    <div class="step-number">06</div>
+
+                    <div class="step-content">
+                        <h3>Risk Scoring</h3>
+                        <p>Calculate customer profitability risk</p>
+                    </div>
+
+                    <div class="step-status">WAITING</div>
+                </div>
+
+
+                <div class="pipeline-line"></div>
+
+
+                <div class="pipeline-step pending" data-step="recommendation">
+                    <div class="step-number">07</div>
+
+                    <div class="step-content">
+                        <h3>Recommendations</h3>
+                        <p>Identify leakage patterns and actions</p>
+                    </div>
+
+                    <div class="step-status">WAITING</div>
+                </div>
+
+
+                <div class="pipeline-line"></div>
+
+
+                <div class="pipeline-step pending" data-step="simulation">
+                    <div class="step-number">08</div>
+
+                    <div class="step-content">
+                        <h3>Business Simulation</h3>
+                        <p>Estimate six-month business impact</p>
+                    </div>
+
+                    <div class="step-status">WAITING</div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= PROGRESS ================= -->
+        <section class="card progress-card">
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="eyebrow">LIVE TRAINING</span>
+                    <h2>Training Progress</h2>
+                </div>
+
+                <div class="progress-percentage" id="progressPercentage">
+                    0%
+                </div>
+
+            </div>
+
+
+            <div class="progress-track">
+
+                <div
+                    class="progress-fill"
+                    id="progressFill"
+                ></div>
+
+            </div>
+
+
+            <div class="progress-meta">
+
+                <span id="currentStage">
+                    Waiting for training...
+                </span>
+
+                <span id="elapsedTime">
+                    00:00
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= METRICS ================= -->
+        <section class="metrics-grid">
+
+            <div class="metric-card">
+
+                <span>Epoch</span>
+
+                <strong id="epochValue">
+                    —
+                </strong>
+
+                <small id="epochTotal">
+                    of —
+                </small>
+
+            </div>
+
+
+            <div class="metric-card">
+
+                <span>Training Loss</span>
+
+                <strong id="trainingLoss">
+                    —
+                </strong>
+
+                <small>
+                    reconstruction loss
+                </small>
+
+            </div>
+
+
+            <div class="metric-card">
+
+                <span>Validation Loss</span>
+
+                <strong id="validationLoss">
+                    —
+                </strong>
+
+                <small>
+                    validation performance
+                </small>
+
+            </div>
+
+
+            <div class="metric-card">
+
+                <span>Learning Rate</span>
+
+                <strong id="learningRate">
+                    —
+                </strong>
+
+                <small>
+                    optimizer rate
+                </small>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= COMPLETION ================= -->
+        <section
+            class="card results-card"
+            id="resultsCard"
+        >
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="eyebrow">RESULT</span>
+                    <h2>Retraining Summary</h2>
+                </div>
+
+                <span
+                    class="badge success"
+                    id="completionBadge"
+                >
+                    NOT COMPLETED
+                </span>
+
+            </div>
+
+
+            <div class="results-grid">
+
+                <div class="result-item">
+                    <span>Training Time</span>
+                    <strong id="resultTime">—</strong>
+                </div>
+
+                <div class="result-item">
+                    <span>Best Epoch</span>
+                    <strong id="resultEpoch">—</strong>
+                </div>
+
+                <div class="result-item">
+                    <span>Anomaly Threshold</span>
+                    <strong id="resultThreshold">—</strong>
+                </div>
+
+                <div class="result-item">
+                    <span>Anomalies Detected</span>
+                    <strong id="resultAnomalies">—</strong>
+                </div>
+
+                <div class="result-item">
+                    <span>Priority Customers</span>
+                    <strong id="resultCustomers">—</strong>
+                </div>
+
+                <div class="result-item">
+                    <span>Critical Customers</span>
+                    <strong id="resultCritical">—</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= RECOMMENDATIONS ================= -->
+        <section class="card recommendations-card" id="recommendationsCard">
+
+            <div class="section-heading">
+                <div>
+                    <span class="eyebrow">ACTIONABLE OUTPUT</span>
+                    <h2>Customer Recommendations</h2>
+                    <p class="section-description">
+                        Recommendations generated from the latest retraining run,
+                        ranked by customer risk score.
+                    </p>
+                </div>
+
+                <span class="badge neutral" id="recommendationCount">
+                    0 CUSTOMERS
+                </span>
+            </div>
+
+            <div class="recommendation-note">
+                <span class="note-icon">i</span>
+                <span>
+                    These recommendations are produced from the current model run.
+                    Retraining can change anomaly detection, customer risk, leakage
+                    patterns, and therefore the recommended actions.
+                </span>
+            </div>
+
+            <div class="recommendation-table-wrap">
+                <table class="recommendation-table">
+                    <thead>
+                        <tr>
+                            <th>Customer</th>
+                            <th>Risk</th>
+                            <th>Loss Exposure</th>
+                            <th>Leakage Pattern</th>
+                            <th>Primary Driver</th>
+                            <th>Recommendation</th>
+                            <th>Priority</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="recommendationTableBody">
+                        <tr>
+                            <td colspan="7" class="table-empty">
+                                Complete a retraining run to generate recommendations.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer class="footer">
+        Profit Leakage Recommendation Engine
+        <span>•</span>
+        Model Retraining Interface
+    </footer>
+
+</div>
+
+
+<script src="/frontend/script.js"></script>
+
+</body>
+</html>

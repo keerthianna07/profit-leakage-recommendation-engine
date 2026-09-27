@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Profit Leakage Recommendation Engine</title>
+
+    <link rel="stylesheet"
+          href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <!-- ======================================
+         DASHBOARD HEADER
+         ====================================== -->
+
+    <header class="dashboard-header">
+
+        <div>
+            <h1>Profit Leakage Recommendation Engine</h1>
+
+            <p>
+                Deep Learning based customer risk analysis
+                and marketing recommendation system
+            </p>
+        </div>
+
+    </header>
+
+
+    <!-- ======================================
+         KPI CARDS
+         ====================================== -->
+
+    <section class="kpi-container">
+
+        <div class="kpi-card">
+            <h3>Customers Analyzed</h3>
+            <p id="totalCustomers">--</p>
+        </div>
+
+
+        <div class="kpi-card">
+            <h3>Critical Customers</h3>
+            <p id="criticalCustomers">--</p>
+        </div>
+
+
+        <div class="kpi-card">
+            <h3>Potential Loss Exposure</h3>
+            <p id="potentialLoss">--</p>
+        </div>
+
+
+        <div class="kpi-card">
+            <h3>Target Customer Sales</h3>
+            <p id="targetSales">--</p>
+        </div>
+
+    </section>
+
+
+    <!-- ======================================
+         RISK ANALYSIS
+         ====================================== -->
+
+    <section class="dashboard-section">
+
+        <h2>Customer Risk Analysis</h2>
+
+        <div class="chart-placeholder">
+            <canvas id="riskChart"></canvas>
+        </div>
+
+    </section>
+
+
+    <!-- ======================================
+         LEAKAGE PATTERNS
+         ====================================== -->
+
+    <section class="dashboard-section">
+
+        <h2>Profit Leakage Patterns</h2>
+
+        <div class="chart-placeholder">
+            <canvas id="leakageChart"></canvas>
+        </div>
+
+    </section>
+
+
+    <!-- ======================================
+         CUSTOMER RECOMMENDATIONS
+         ====================================== -->
+
+    <section class="dashboard-section">
+
+        <h2>Priority Customer Recommendations</h2>
+
+        <div id="customerTable">
+
+            <div class="recommendation-table-container">
+                <div class="table-header">
+                    <h3>Top Priority Customers</h3>
+                    <span id="recommendationCount">
+                        Top 20 customers by risk score
+                    </span>
+                </div>
+
+                <div class="table-wrapper">
+                    <table id="recommendationTable">
+                        <thead>
+                        <tr>
+                            <th>Customer</th>
+                            <th>Risk Score</th>
+                            <th>Risk</th>
+                            <th>Potential Loss</th>
+                            <th>Leakage Pattern</th>
+                            <th>Recommendation</th>
+                            <th>Priority</th>
+                        </tr>
+                        </thead>
+                        <tbody id="recommendationTableBody">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ======================================
+         SIX MONTH IMPACT
+         ====================================== -->
+
+    <section class="dashboard-section">
+
+        <h2>6-Month Business Impact</h2>
+
+        <div class="chart-placeholder">
+
+            <canvas id="impactChart"></canvas>
+        </div>
+
+    </section>
+
+
+    <!-- ======================================
+         JAVASCRIPT
+         ====================================== -->
+    <script>
+    console.log("INLINE JAVASCRIPT IS WORKING!");
+    </script>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

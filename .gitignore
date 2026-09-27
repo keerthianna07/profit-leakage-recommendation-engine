@@ -1,0 +1,17 @@
+﻿.env
+.env.*
+!.env.example
+.venv/
+.venv313/
+venv/
+__pycache__/
+*.py[cod]
+*.log
+.DS_Store
+.idea/
+.vscode/
+retraining ui/backend/uploads/
+Data/
+*.xlsx
+dashboard_data.csv
+simulation_results.csv
